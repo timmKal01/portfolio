@@ -1,0 +1,54 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow1" cx="30%" cy="15%" r="60%">
+      <stop offset="0%" stop-color="#57bfa3" stop-opacity="0.28" />
+      <stop offset="70%" stop-color="#57bfa3" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="8%" r="50%">
+      <stop offset="0%" stop-color="#e2793f" stop-opacity="0.22" />
+      <stop offset="70%" stop-color="#e2793f" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="#14181b" />
+  <rect width="800" height="260" fill="url(#glow1)" />
+  <rect width="800" height="260" fill="url(#glow2)" />
+
+  <!-- header -->
+  <rect x="0" y="0" width="800" height="64" fill="#14181b" />
+  <line x1="0" y1="64" x2="800" y2="64" stroke="#2a3338" stroke-width="1" />
+  <text x="32" y="40" font-family="Space Grotesk, sans-serif" font-size="22" font-weight="700" fill="#e8e6df">Tim&#8217;s Actors</text>
+  <text x="440" y="38" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="#9aa3ab">LOG</text>
+  <text x="500" y="38" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1" fill="#9aa3ab">ACTORS</text>
+  <rect x="734" y="20" width="32" height="32" rx="4" fill="none" stroke="#2a3338" stroke-width="1.5" />
+  <circle cx="750" cy="36" r="6" fill="none" stroke="#e8e6df" stroke-width="1.5" />
+
+  <!-- eyebrow -->
+  <text x="32" y="130" font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="2" fill="#57bfa3">THE PORTFOLIO</text>
+
+  <!-- headline -->
+  <text x="30" y="182" font-family="Space Grotesk, sans-serif" font-size="40" font-weight="700" fill="#f2f0ea">Small, sharp data tools —</text>
+  <text x="30" y="228" font-family="Space Grotesk, sans-serif" font-size="40" font-weight="700" fill="#f2f0ea">priced per run, not per seat.</text>
+
+  <!-- lede -->
+  <text x="32" y="270" font-family="IBM Plex Sans, sans-serif" font-size="15" fill="#9aa3ab">16 Apify actors turning public data into clean JSON — company signals,</text>
+  <text x="32" y="294" font-family="IBM Plex Sans, sans-serif" font-size="15" fill="#9aa3ab">hiring activity, tech stacks, security alerts, and more.</text>
+
+  <!-- buttons -->
+  <rect x="32" y="322" width="180" height="46" rx="4" fill="#e8e6df" />
+  <text x="122" y="351" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600" fill="#14181b">Browse the actors</text>
+
+  <rect x="226" y="322" width="176" height="46" rx="4" fill="none" stroke="#2a3338" stroke-width="1.5" />
+  <text x="314" y="351" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600" fill="#e8e6df">Read the build log</text>
+
+  <!-- stat row -->
+  <line x1="32" y1="404" x2="768" y2="404" stroke="#2a3338" stroke-width="1" />
+  <text x="32" y="430" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="#9aa3ab">ACTORS LIVE</text>
+  <text x="32" y="462" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#f2f0ea">16</text>
+
+  <text x="200" y="430" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="#9aa3ab">PER EVENT</text>
+  <text x="200" y="462" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#f2f0ea">$0.01&#8211;$0.03</text>
+
+  <text x="400" y="430" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="#9aa3ab">SUBSCRIPTIONS</text>
+  <text x="400" y="462" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#f2f0ea">Zero</text>
+</svg>
