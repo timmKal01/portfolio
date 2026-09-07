@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 @theme{
-  /* Deepened from the original neon mint/washed blue so they still pass
-     WCAG AA (4.5:1) as text/border colors on the cream background, not
-     just as decorative gradient stops. */
-  --color-primary: #0f766e;
-  --color-secondary: #0e7490;
-  --color-background: #fffcf8;
-  --color-accent: #4d7c0f;
+  /* Dark is the primary (only) theme. Colors picked to pass WCAG AA
+     (4.5:1) as text/border colors on the dark background, not just as
+     decorative gradient stops. */
+  --color-primary: #2dd4bf;
+  --color-secondary: #38bdf8;
+  --color-accent: #a3e635;
+  --color-background: #14181b;
+  --color-ink: #e8e6df;
+  --color-ink-muted: #9aa3ab;
+  --color-surface: #1c2226;
+  --color-line: #2a3338;
 }
 
 @layer base {
@@ -17,25 +21,66 @@
 
   body{
     overflow-x: hidden;
-    background: #ffffff;
+    background: var(--color-background);
+    color: var(--color-ink);
+  }
+}
+
+@keyframes matrix-fall {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    /* Exactly one tile height, so the loop has no visible seam. */
+    background-position: 0 640px;
+  }
+}
+
+@keyframes circuit-drift {
+  0%,
+  100% {
+    background-position: 0 0;
+    opacity: 0.3;
+  }
+  50% {
+    background-position: 24px -18px;
+    opacity: 0.5;
   }
 }
 
 @layer components {
+  .matrix-bg {
+    @apply absolute inset-0 z-0 pointer-events-none;
+    background-repeat: repeat;
+    background-size: 360px 640px;
+    /* The source PNG has real alpha (black chroma-keyed to transparent),
+       so only the rain glyphs render — no wash over the cream background. */
+    filter: hue-rotate(55deg) saturate(1.2);
+    opacity: 0.55;
+    animation: matrix-fall 24s linear infinite;
+  }
+
+  .circuit-bg {
+    @apply absolute inset-0 z-0 pointer-events-none;
+    background-repeat: repeat;
+    background-size: 300px 500px;
+    animation: circuit-drift 12s ease-in-out infinite;
+  }
+
   .menu-wrapper {
-    @apply 
-      md:flex flex-col md:flex-row 
-      gap-4 md:gap-8 
-      text-sm font-medium 
-      absolute md:static 
-      top-[70px] left-0 
-      w-full md:w-auto 
-      bg-white/45 md:bg-transparent 
-      rounded-lg md:rounded-none 
-      shadow-md md:shadow-none 
-      p-4 md:p-0 
-      z-50 
-      border border-[#feecdc] md:border-none 
+    @apply
+      md:flex flex-col md:flex-row
+      gap-4 md:gap-8
+      text-sm font-medium
+      absolute md:static
+      top-[70px] left-0
+      w-full md:w-auto
+      bg-surface/90 md:bg-transparent
+      rounded-lg md:rounded-none
+      shadow-md md:shadow-none
+      p-4 md:p-0
+      z-50
+      border border-line md:border-none
       backdrop-blur-[10px] md:backdrop-blur-none;
   }
 
@@ -53,17 +98,19 @@
 }
 
 .action-btn-outline {
-  @apply h-10 md:h-12 text-xs md:text-[14px] font-medium 
-         text-primary px-4 lg:px-10 rounded-[71px] 
-         border-2 border-primary transition-all duration-300 
+  @apply h-10 md:h-12 inline-flex items-center justify-center leading-none
+         text-xs md:text-[14px] font-medium
+         text-primary px-4 lg:px-10 rounded-[71px]
+         border-2 border-primary transition-all duration-300
          ease-in-out hover:bg-primary hover:text-white;
 }
 
 .action-btn {
-  @apply h-10 md:h-12 text-xs md:text-[14px] font-medium 
-         text-white px-4 lg:px-10 rounded-[71px] 
-         bg-gradient-to-r from-primary to-secondary 
-         transition-all duration-300 ease-in-out 
+  @apply h-10 md:h-12 inline-flex items-center justify-center leading-none
+         text-xs md:text-[14px] font-medium
+         text-white px-4 lg:px-10 rounded-[71px]
+         bg-gradient-to-r from-primary to-secondary
+         transition-all duration-300 ease-in-out
          hover:opacity-90;
 }
 
@@ -77,15 +124,15 @@
          rounded-full shadow-xl
          object-cover
          transition-transform duration-200 ease-out
-         hover:scale-105 hover:shadow-[0_0_25px_rgba(15,118,110,0.4)];
+         hover:scale-105 hover:shadow-[0_0_25px_rgba(45,212,191,0.35)];
 }
 
 .icon-img {
-  @apply w-10 h-10 md:w-12 md:h-12 
-         rounded-xl bg-white/10 backdrop-blur-md 
-         shadow-md border border-white/20 
+  @apply w-10 h-10 md:w-12 md:h-12
+         rounded-xl bg-white/10 backdrop-blur-md
+         shadow-md border border-white/20
          p-2 transition-all duration-500 ease-out
-         hover:scale-110 hover:shadow-[0_4px_20px_rgba(15,118,110,0.35)]
+         hover:scale-110 hover:shadow-[0_4px_20px_rgba(45,212,191,0.3)]
          hover:bg-gradient-to-br hover:from-primary hover:to-secondary;
 }
 

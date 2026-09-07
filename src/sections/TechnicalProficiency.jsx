@@ -29,7 +29,7 @@ const TechnicalProficiency = () => {
             Technical Proficiency
           </h4>
 
-          <p className="text-sm md:text-base mt-4 leading-7 text-gray-700">
+          <p className="text-sm md:text-base mt-4 leading-7 text-ink-muted">
             A versatile developer with hands-on expertise in modern
             technologies, tools, and frameworks, dedicated to building
             efficient, scalable, and user-centric solutions.

@@ -10,7 +10,7 @@ const Tabs = ({ tabList, activeTab, onChange }) => {
 
   return (
     <div className="flex items-center justify-center my-10">
-      <div className="bg-[#fefaf3] rounded-full flex flex-wrap gap-2 md:gap-4 p-2 shadow-sm border border-[#e4d9c6]/60">
+      <div className="bg-surface rounded-full flex flex-wrap gap-2 md:gap-4 p-2 shadow-sm border border-line">
          {tabList.map((tab) => (
                     <motion.button
                         key={tab.id}

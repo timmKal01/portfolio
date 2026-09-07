@@ -6,9 +6,9 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[#feecdc] mt-10">
+    <footer className="border-t border-line mt-10">
       <div className="container mx-auto px-6 md:px-10 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <p className="text-sm font-medium text-black/70">
+        <p className="text-sm font-medium text-ink/70">
           Timothy Kelvin &mdash; Full-Stack Developer
         </p>
 
@@ -19,7 +19,7 @@ const Footer = () => {
               to={item.to}
               smooth
               offset={item.offset}
-              className="cursor-pointer text-gray-600 hover:text-primary transition-colors duration-300"
+              className="cursor-pointer text-ink-muted hover:text-primary transition-colors duration-300"
             >
               {item.label}
             </Link>
@@ -34,7 +34,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
               aria-label={social.label}
-              className="text-gray-500 hover:text-primary transition-colors duration-300"
+              className="text-ink-muted hover:text-primary transition-colors duration-300"
             >
               <social.icon className="text-lg" />
             </a>
@@ -42,7 +42,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-[#feecdc] py-4 text-center text-xs text-gray-500">
+      <div className="border-t border-line py-4 text-center text-xs text-ink-muted">
         &copy; {year} Timothy Kalungu. All rights reserved.
       </div>
     </footer>

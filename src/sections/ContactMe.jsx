@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 import { ABOUT_ME } from "../utils/data";
 import { FORMSPREE_ENDPOINT } from "../config/contact";
+import CircuitBg from "../assets/images/circuit-bg.png";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -64,8 +65,13 @@ const ContactMe = () => {
   };
 
   return (
-    <section id="contact" className="py-20 mt-10">
-      <div className="container mx-auto px-6 md:px-10">
+    <section id="contact" className="relative overflow-hidden py-20 mt-10">
+      <div
+        className="circuit-bg"
+        style={{ backgroundImage: `url(${CircuitBg})` }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 container mx-auto px-6 md:px-10">
         <motion.div
           className="w-full lg:w-[60vw] mx-auto text-center"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
@@ -74,7 +80,7 @@ const ContactMe = () => {
           transition={{ duration: 0.5 }}
         >
           <h4 className="section-title">Contact Me</h4>
-          <p className="text-sm md:text-base mt-4 leading-7 text-gray-700">
+          <p className="text-sm md:text-base mt-4 leading-7 text-ink-muted">
             Have a project in mind, or just want to say hi? I'd love to hear from you.
           </p>
         </motion.div>
@@ -89,21 +95,21 @@ const ContactMe = () => {
           >
             <a
               href={`mailto:${ABOUT_ME.email}`}
-              className="flex items-center gap-3 p-4 rounded-xl bg-white border border-[#fce8d4] hover:border-primary transition-colors duration-300 group"
+              className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-line hover:border-primary transition-colors duration-300 group"
             >
               <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <FaEnvelope />
               </span>
-              <span className="text-sm text-black/80 break-all">{ABOUT_ME.email}</span>
+              <span className="text-sm text-ink/80 break-all">{ABOUT_ME.email}</span>
             </a>
             <a
               href={`tel:${ABOUT_ME.phone.replace(/[^+\d]/g, "")}`}
-              className="flex items-center gap-3 p-4 rounded-xl bg-white border border-[#fce8d4] hover:border-primary transition-colors duration-300 group"
+              className="flex items-center gap-3 p-4 rounded-xl bg-surface border border-line hover:border-primary transition-colors duration-300 group"
             >
               <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                 <FaPhone />
               </span>
-              <span className="text-sm text-black/80">{ABOUT_ME.phone}</span>
+              <span className="text-sm text-ink/80">{ABOUT_ME.phone}</span>
             </a>
           </motion.div>
 
@@ -117,7 +123,7 @@ const ContactMe = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="contact-name" className="text-xs font-medium text-gray-600">
+              <label htmlFor="contact-name" className="text-xs font-medium text-ink-muted">
                 Name
               </label>
               <input
@@ -128,17 +134,17 @@ const ContactMe = () => {
                 onChange={handleChange("name")}
                 aria-invalid={Boolean(errors.name)}
                 aria-describedby={errors.name ? "contact-name-error" : undefined}
-                className="rounded-lg border border-[#e4d9c6] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="rounded-lg border border-line bg-surface text-ink px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
               {errors.name && (
-                <p id="contact-name-error" className="text-xs text-red-600">
+                <p id="contact-name-error" className="text-xs text-red-400">
                   {errors.name}
                 </p>
               )}
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="contact-email" className="text-xs font-medium text-gray-600">
+              <label htmlFor="contact-email" className="text-xs font-medium text-ink-muted">
                 Email
               </label>
               <input
@@ -149,17 +155,17 @@ const ContactMe = () => {
                 onChange={handleChange("email")}
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? "contact-email-error" : undefined}
-                className="rounded-lg border border-[#e4d9c6] px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="rounded-lg border border-line bg-surface text-ink px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
               {errors.email && (
-                <p id="contact-email-error" className="text-xs text-red-600">
+                <p id="contact-email-error" className="text-xs text-red-400">
                   {errors.email}
                 </p>
               )}
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="contact-message" className="text-xs font-medium text-gray-600">
+              <label htmlFor="contact-message" className="text-xs font-medium text-ink-muted">
                 Message
               </label>
               <textarea
@@ -170,10 +176,10 @@ const ContactMe = () => {
                 rows={5}
                 aria-invalid={Boolean(errors.message)}
                 aria-describedby={errors.message ? "contact-message-error" : undefined}
-                className="rounded-lg border border-[#e4d9c6] px-4 py-2.5 text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="rounded-lg border border-line bg-surface text-ink px-4 py-2.5 text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
               {errors.message && (
-                <p id="contact-message-error" className="text-xs text-red-600">
+                <p id="contact-message-error" className="text-xs text-red-400">
                   {errors.message}
                 </p>
               )}
@@ -194,7 +200,7 @@ const ContactMe = () => {
                 </p>
               )}
               {status === "error" && (
-                <p className="text-sm text-red-600">
+                <p className="text-sm text-red-400">
                   Something went wrong sending that. Please try again, or email me directly at{" "}
                   <a href={`mailto:${ABOUT_ME.email}`} className="underline">
                     {ABOUT_ME.email}
@@ -203,7 +209,7 @@ const ContactMe = () => {
                 </p>
               )}
               {status === "unavailable" && (
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-ink-muted">
                   This form isn&rsquo;t hooked up to an inbox yet — please email me directly at{" "}
                   <a href={`mailto:${ABOUT_ME.email}`} className="underline text-primary">
                     {ABOUT_ME.email}

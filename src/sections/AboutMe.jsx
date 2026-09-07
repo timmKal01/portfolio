@@ -36,7 +36,7 @@ const AboutMe = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <h4 className="hidden lg:block w-[200px] section-title text-left lg:text-left">About Me</h4>
-          <p className="text-sm md:text-base text-justify leading-6 mt-4 text-black/80 whitespace-pre-line">
+          <p className="text-sm md:text-base text-justify leading-6 mt-4 text-ink/80 whitespace-pre-line">
             {ABOUT_ME.content}
             <br/><br/>
             {ABOUT_ME.contentTwo}

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-scroll";
 import { motion, useReducedMotion } from "framer-motion";
 import Profile_pic from "../assets/images/profile_pic.jpg";
+import MatrixBg from "../assets/images/matrix-rain.png";
 import Icon_1 from "../assets/images/icon_1.png";
 import Icon_2 from "../assets/images/icon_2.png";
 import Icon_3 from "../assets/images/icon_3.png";
@@ -14,7 +15,13 @@ const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="hero" className="container mx-auto px-6 lg:px-8 ">
+    <section id="hero" className="relative overflow-hidden">
+      <div
+        className="matrix-bg"
+        style={{ backgroundImage: `url(${MatrixBg})` }}
+        aria-hidden="true"
+      />
+      <div className="relative z-10 container mx-auto px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-14 mt-[80px] h-full">
 
         {/* Left Text Section */}
@@ -36,7 +43,7 @@ const Hero = () => {
             Building Scalable & User-Centric Web Apps
           </h1>
 
-          <p className="w-full lg:w-[520px] text-sm lg:text-base mt-4 text-gray-700">
+          <p className="w-full lg:w-[520px] text-sm lg:text-base mt-4 text-ink-muted">
             I'm a passionate Full-Stack Developer crafting responsive, accessible,
             and dynamic web experiences using{" "}
             <span className="text-primary font-medium">React</span>,{" "}
@@ -98,6 +105,7 @@ const Hero = () => {
           <StatInfoCard key={item.id} count={item.count} lable={item.label} />
         ))}
       </motion.div>
+      </div>
     </section>
   );
 };

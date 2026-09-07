@@ -39,10 +39,10 @@ const Navbar = () => {
 
   return (
     <nav className="container mx-auto sticky top-5 z-50 mt-2">
-  <div className="flex items-center justify-between rounded-full bg-white/30 border border-[#cdccfe]/70 backdrop-blur-[12px] shadow-md px-4 md:px-6 py-2 transition-all duration-300">
+  <div className="flex items-center justify-between rounded-full bg-surface/70 border border-line backdrop-blur-[12px] shadow-md px-4 md:px-6 py-2 transition-all duration-300">
     {/* Logo */}
     <img
-      className="h-8 md:h-10 ml-2 md:ml-4 hover:scale-105 transition-transform duration-300"
+      className="h-8 md:h-10 ml-2 md:ml-4 invert hover:scale-105 transition-transform duration-300"
       src={LOGO}
       alt="Logo"
     />

@@ -38,7 +38,7 @@ const Projects = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h4 className="lg:block w-[200px] section-title text-left lg:text-left m-2">Projects</h4>
-                    <p className="text-sm md:text-base text-justify leading-6 mt-4 text-black/80 whitespace-pre-line">
+                    <p className="text-sm md:text-base text-justify leading-6 mt-4 text-ink-muted whitespace-pre-line">
                         A selection of things I&rsquo;ve built and shipped — from a live data-tool
                         portfolio to full-stack e-commerce platforms.
                     </p>
