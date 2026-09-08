@@ -1,24 +1,47 @@
 import React, { useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaPaperclip, FaXmark } from "react-icons/fa6";
 import { ABOUT_ME } from "../utils/data";
 import { FORMSPREE_ENDPOINT } from "../config/contact";
 import CircuitBg from "../assets/images/circuit-bg.png";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MAX_FILE_BYTES = 10 * 1024 * 1024; // Formspree's free-tier cap per submission
+
+const formatFileSize = (bytes) => `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
 
 const ContactMe = () => {
   const prefersReducedMotion = useReducedMotion();
   const [values, setValues] = useState({ name: "", email: "", message: "" });
+  const [file, setFile] = useState(null);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error | unavailable
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const messageRef = useRef(null);
+  const fileInputRef = useRef(null);
   const fieldRefs = { name: nameRef, email: emailRef, message: messageRef };
 
   const handleChange = (field) => (e) => {
     setValues((v) => ({ ...v, [field]: e.target.value }));
+  };
+
+  const handleFileChange = (e) => {
+    const selected = e.target.files?.[0] ?? null;
+    if (selected && selected.size > MAX_FILE_BYTES) {
+      setErrors((err) => ({ ...err, file: `That file is ${formatFileSize(selected.size)} — please keep attachments under 10MB.` }));
+      setFile(null);
+      e.target.value = "";
+      return;
+    }
+    setErrors((err) => ({ ...err, file: undefined }));
+    setFile(selected);
+  };
+
+  const clearFile = () => {
+    setFile(null);
+    setErrors((err) => ({ ...err, file: undefined }));
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const validate = () => {
@@ -33,7 +56,7 @@ const ContactMe = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const nextErrors = validate();
-    setErrors(nextErrors);
+    setErrors((err) => ({ ...nextErrors, file: err.file }));
 
     if (Object.keys(nextErrors).length > 0) {
       const firstInvalid = ["name", "email", "message"].find((f) => nextErrors[f]);
@@ -48,14 +71,23 @@ const ContactMe = () => {
 
     setStatus("submitting");
     try {
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("email", values.email);
+      formData.append("message", values.message);
+      if (file) formData.append("attachment", file);
+
+      // No Content-Type header here — the browser sets the correct
+      // multipart boundary itself; setting it manually breaks the upload.
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        headers: { Accept: "application/json" },
+        body: formData,
       });
       if (res.ok) {
         setStatus("success");
         setValues({ name: "", email: "", message: "" });
+        clearFile();
       } else {
         setStatus("error");
       }
@@ -181,6 +213,41 @@ const ContactMe = () => {
               {errors.message && (
                 <p id="contact-message-error" className="text-xs text-red-400">
                   {errors.message}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-file" className="text-xs font-medium text-ink-muted">
+                Attachment <span className="text-ink-muted/70">(optional, up to 10MB)</span>
+              </label>
+              <input
+                id="contact-file"
+                ref={fileInputRef}
+                type="file"
+                onChange={handleFileChange}
+                aria-invalid={Boolean(errors.file)}
+                aria-describedby={errors.file ? "contact-file-error" : undefined}
+                className="text-xs text-ink-muted file:mr-3 file:rounded-lg file:border-0 file:bg-primary/15 file:px-4 file:py-2 file:text-xs file:font-medium file:text-primary hover:file:bg-primary/25 file:transition-colors file:duration-200 file:cursor-pointer cursor-pointer"
+              />
+              {file && (
+                <div className="flex items-center gap-2 text-xs text-ink-muted bg-surface border border-line rounded-lg px-3 py-2 w-fit">
+                  <FaPaperclip className="text-primary shrink-0" />
+                  <span className="truncate max-w-[220px]">{file.name}</span>
+                  <span className="text-ink-muted/70">({formatFileSize(file.size)})</span>
+                  <button
+                    type="button"
+                    onClick={clearFile}
+                    aria-label="Remove attachment"
+                    className="text-ink-muted hover:text-red-400 transition-colors duration-200"
+                  >
+                    <FaXmark />
+                  </button>
+                </div>
+              )}
+              {errors.file && (
+                <p id="contact-file-error" className="text-xs text-red-400">
+                  {errors.file}
                 </p>
               )}
             </div>
