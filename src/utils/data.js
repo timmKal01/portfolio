@@ -18,6 +18,7 @@ import portfolioWebsiteImg from "../assets/images/portfolio_website.png";
 import ecommercePlatformImg from "../assets/images/e-commerce_platform.png";
 import ecommerceAdminImg from "../assets/images/task_management_app.png";
 import timsActorsImg from "../assets/images/tims-actors-cover.svg";
+import mkahawaImg from "../assets/images/mkahawa-cover.svg";
 
 export const MENU_LINKS = [
     { id: "01", label: "Home", offset: -100, to: "hero" },
@@ -206,6 +207,16 @@ export const PROJECTS = [
     },
     {
         id: "02",
+        title: "Mkahawa — Nairobi Steakhouse",
+        description:
+            "A restaurant landing page for a Nairobi charcoal-grill steakhouse — tabbed menu, hours, and a full reservation form.",
+        image: mkahawaImg,
+        tags: ["Next.js", "TailwindCSS"],
+        demoUrl: "https://mkaa-nairobi.vercel.app",
+        repoUrl: null,
+    },
+    {
+        id: "03",
         title: "Responsive Portfolio Website",
         description:
             "This site — a responsive personal portfolio built with React and TailwindCSS.",
@@ -215,7 +226,7 @@ export const PROJECTS = [
         repoUrl: null,
     },
     {
-        id: "03",
+        id: "04",
         title: "E-Commerce Platform (React + Laravel)",
         description: "A React front end on a Laravel starter kit backend — currently in development.",
         image: ecommercePlatformImg,
@@ -224,7 +235,7 @@ export const PROJECTS = [
         repoUrl: null,
     },
     {
-        id: "04",
+        id: "05",
         title: "E-Commerce Admin Panel",
         description:
             "A full Laravel + Livewire admin panel for category, product, cart, and order management.",
