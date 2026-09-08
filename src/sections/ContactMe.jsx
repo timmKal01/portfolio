@@ -263,7 +263,7 @@ const ContactMe = () => {
             <div role="status" aria-live="polite">
               {status === "success" && (
                 <p className="text-sm text-primary font-medium">
-                  Thanks — your message is on its way. I&rsquo;ll get back to you soon.
+                  Your message has been sent successfully!
                 </p>
               )}
               {status === "error" && (
