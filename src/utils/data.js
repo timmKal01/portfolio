@@ -15,7 +15,7 @@ import { SiExpress, SiMongodb, SiMysql } from "react-icons/si";
 import { FaGitAlt, FaXTwitter } from 'react-icons/fa6';
 
 import portfolioWebsiteImg from "../assets/images/portfolio_website.png";
-import ecommercePlatformImg from "../assets/images/e-commerce_platform.png";
+import northgateImg from "../assets/images/northgate-cover.svg";
 import ecommerceAdminImg from "../assets/images/task_management_app.png";
 import timsActorsImg from "../assets/images/tims-actors-cover.svg";
 import mkahawaImg from "../assets/images/mkahawa-cover.svg";
@@ -227,12 +227,13 @@ export const PROJECTS = [
     },
     {
         id: "04",
-        title: "E-Commerce Platform (React + Laravel)",
-        description: "A React front end on a Laravel starter kit backend — currently in development.",
-        image: ecommercePlatformImg,
-        tags: ["React.js", "Laravel"],
-        demoUrl: null,
-        repoUrl: null,
+        title: "Northgate & Co. — E-Commerce Platform",
+        description:
+            "A full-stack Laravel storefront with vendor and admin dashboards, dark/light theming, and social login — deployed live on Azure App Service.",
+        image: northgateImg,
+        tags: ["Laravel", "Blade", "Alpine.js", "MySQL", "Azure"],
+        demoUrl: "https://myecom-abhrbhcwc0fwhzf9.westus3-01.azurewebsites.net",
+        repoUrl: "https://github.com/timmKal01/myecom",
     },
     {
         id: "05",

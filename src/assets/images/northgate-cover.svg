@@ -1,0 +1,43 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ngGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b5bff" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#3b5bff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="#f5f6fa" />
+  <rect width="800" height="280" fill="url(#ngGlow)" />
+
+  <!-- header -->
+  <line x1="0" y1="64" x2="800" y2="64" stroke="#e5e7eb" stroke-width="1" />
+  <text x="32" y="40" font-family="Figtree, Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="0.5" fill="#111827">Northgate <tspan fill="#3b5bff">&amp;</tspan> Co.</text>
+  <text x="480" y="38" font-family="Figtree, Arial, sans-serif" font-size="12" fill="#6b7280">Electronics</text>
+  <text x="568" y="38" font-family="Figtree, Arial, sans-serif" font-size="12" fill="#6b7280">Fashion</text>
+  <text x="638" y="38" font-family="Figtree, Arial, sans-serif" font-size="12" fill="#6b7280">Home &amp; Living</text>
+
+  <!-- eyebrow -->
+  <text x="32" y="140" font-family="Figtree, Arial, sans-serif" font-size="12" letter-spacing="2" font-weight="600" fill="#3b5bff">NEW SEASON, CONSIDERED GOODS</text>
+
+  <!-- headline -->
+  <text x="30" y="200" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="700" fill="#111827">Made to last, not</text>
+  <text x="30" y="252" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="700" fill="#111827">just to look good.</text>
+
+  <!-- lede -->
+  <text x="32" y="292" font-family="Figtree, Arial, sans-serif" font-size="14" fill="#6b7280">Electronics, fashion, and home goods chosen for how they hold up.</text>
+  <text x="32" y="312" font-family="Figtree, Arial, sans-serif" font-size="14" fill="#6b7280">Curated by a small team of people who use them daily.</text>
+
+  <!-- buttons -->
+  <rect x="32" y="344" width="176" height="46" rx="23" fill="#111827" />
+  <text x="120" y="373" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Shop the collection</text>
+
+  <rect x="220" y="344" width="150" height="46" rx="23" fill="none" stroke="#d1d5db" stroke-width="1.2" />
+  <text x="295" y="373" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="14" font-weight="600" fill="#111827">See what&#8217;s new</text>
+
+  <!-- product grid hint -->
+  <rect x="440" y="150" width="328" height="230" rx="12" fill="#e9ebf5" />
+  <rect x="32" y="420" width="150" height="52" rx="10" fill="#ffffff" stroke="#e5e7eb" />
+  <rect x="196" y="420" width="150" height="52" rx="10" fill="#ffffff" stroke="#e5e7eb" />
+  <rect x="360" y="420" width="150" height="52" rx="10" fill="#ffffff" stroke="#e5e7eb" />
+  <rect x="524" y="420" width="150" height="52" rx="10" fill="#ffffff" stroke="#e5e7eb" />
+</svg>
